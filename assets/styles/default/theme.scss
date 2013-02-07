@@ -1,5 +1,4 @@
-﻿//* scss-compile-options: :style => :compressed
-@import "../mixin", "_theme", "theme-mixin"; 
+﻿@import "../mixin", "_theme", "theme-mixin"; 
 
 /**********************************
     Misc.
@@ -2900,18 +2899,33 @@ textarea.input-size12
 			}
 			.thumbnail
 			{
+				height:16px;
+				width:auto;
+				padding-right:10px;
 				.thumbnail-close-image
 				{
-					right:31px;
+					right:0;
+					top:0;
 				}
 				.non-image-container .thumbnail-close-image
 				{
-					right:12px;
+					right:31px;
 				}
 				.thumbnail-image
 				{
-					max-width:100px;
+					height:16px;
+					display:inline-block;
 				}				
+				img
+				{
+					border-radius:0;
+				}	
+				.thumbnail-name
+				{
+					display:inline-block;
+					padding:0;
+					position:relative;
+				}	
 			}
 
 		}
@@ -4209,21 +4223,28 @@ textarea.input-size12
 		{
 			display:none;
 		}
+		.thumbnail-image
+		{
+			float:left;
+		}
 		.thumbnail img
 		{
-			widh:50px;
-			height:50px;			
+			widh:16px;
+			height:16px;			
 		}
 		.attachment
 		{
 			padding-top:5px;
-
+			.thumbnail
+			{
+				padding-bottom:5px;
+			}
 			.thumbnail-name 
 			{
-				padding-top:5px;
 				a 
 				{
 					color:$color-grayscale1;
+					padding-left:5px;
 				}
 			}
 		}

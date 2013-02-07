@@ -1,5 +1,4 @@
-﻿//* scss-compile-options: :style => :compressed
-@import "../mixin", "_theme"; 
+﻿@import "../mixin", "_theme"; 
 
 @mixin border
 {
@@ -24,7 +23,6 @@
 {
 	border: $size solid $theme-color;
 }
-
 
 @mixin border-dotted
 {

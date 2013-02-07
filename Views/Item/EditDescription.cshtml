@@ -37,22 +37,33 @@
              </text>
          }
         $("#popup-button-yes").click(function (e) {
+            postEditDescription()
+        });
 
+        $("#popup-button-no").click(function (e) { gemini_popup.popupClose(e); });
+
+
+            
+        gemini_commons.inputKeyHandler('#EditDescriptionPopupContainer .TitleContainer input',
+            function () {
+                postEditDescription();
+            },
+            false, false)            
+       
+        function postEditDescription()
+        {
             if ($("#regular-form").valid()) {
                 gemini_ui.startBusy('#colorbox #popup-button-yes');
                 gemini_ajax.postCall(csVars.ProjectUrl + "item", $('#id', "#EditDescriptionPopupContainer").val() + "/updatedescription", function (response) {
 
-                    gemini_popup.popupClose(e);
-                    if (response.Success)
-                    {
+                    gemini_popup.popupClose();
+                    if (response.Success) {
                         gemini_item.replaceContent(response.Result);
                     }
                     gemini_ui.stopBusy('#colorbox #popup-button-yes');
                 }, function () { gemini_ui.stopBusy('#colorbox #popup-button-yes'); }, $("#regular-form").serialize());
             }
-        });
-
-        $("#popup-button-no").click(function (e) { gemini_popup.popupClose(e); });
+        }
 
     });
 

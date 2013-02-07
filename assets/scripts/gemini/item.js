@@ -276,7 +276,7 @@ gemini_item = {
             var t = $("#comments-wysiwyg-content").parents("form:eq(0)").attr("class");
             var s = $("#comments-wysiwyg-content").parents("form:eq(0)").find(".option-row:eq(0) .file-upload-button").val();
 
-            $("#comments-wysiwyg-content").parents("form:eq(0)").find(".option-row:eq(0) .file-upload-button").replaceWith("<input class='file-upload-button' type='file' name='comment-attachment'>");
+            $("#comments-wysiwyg-content").parents("form:eq(0)").find(".option-row:eq(0) .file-upload-button").replaceWith("<input class='file-upload-button' type='file' name='comment-attachment' multiple='multiple' />");
      
             tinyMCE.execCommand('mceFocus', false, 'comments-wysiwyg-content');
             
@@ -491,7 +491,7 @@ gemini_item = {
                                 "<form class='comments-form " + contentIdentifier + "' action='" + $(TargetElem).attr("data-url") + "' method='post' enctype='multipart/form-data'>" +
                                     "<div class='wysiwyg-container'><textarea id='comments-wysiwyg-content" + contentIdentifier + "' name='commentsWysiwygContent'>" + comment + "</textarea></div>" +
                                      "<div class='comment-extra-options'>" +
-                                        "<div class='option-row'><span class='left comment-label'>[[Attachments]]</span>  <input type='file' class='file-upload-button' name='comment-attachment'/></div>" +
+                                        "<div class='option-row'><span class='left comment-label'>[[Attachments]]</span>  <input type='file' class='file-upload-button' name='comment-attachment' multiple='multiple' /></div>" +
                                         "<div class='option-row'><span class='left comment-label'>[[Visibility]]</span></div>" +
                                      "</div>" +
                                      "<div class='cs-comment-wysiwyg-option'>" +

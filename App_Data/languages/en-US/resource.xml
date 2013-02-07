@@ -98,7 +98,7 @@
   <item id="VersionUnscheduled">Unscheduled</item>
   <item id="VersionUnaffected">Unaffected</item>
   <item id="ResourceUnassigned">Unassigned</item>
-  <item id="Unassigned">** Unassigned **</item>
+  <item id="Unassigned">Unassigned</item>
 
   <item id="More">More</item>
   <item id="Find">Find</item>
@@ -170,7 +170,7 @@
   <item id="RunName">Run Name</item>
   <item id="ItemsTested">Items Tested</item>
   <item id="NewRun">New Run</item>
-  <item id="ItemCases">Item Tested in Cases</item>
+  <item id="ItemCases">Linked Test Cases</item>
   <item id="ItemsRaised">Items Raised</item>
   <item id="ResetConfirm">Reset this and subsequent steps in this case, NOTE: all attachments in subsequent steps will be deleted.  Continue?</item>
 
@@ -240,7 +240,7 @@
   <item id="Versions">Versions</item>
   <item id="Version">Version</item>
   <item id="AffectedVersions">Affected Versions</item>
-  <item id="Estimated">Estimated</item>
+  <item id="Estimated">Estimate</item>
   <item id="Remaining">Remaining</item>
   <item id="Logged">Logged</item>
   <item id="StartDate">Start Date</item>
@@ -257,11 +257,11 @@
   <item id="Time">Time</item>
   <item id="SourceControl">Source Control</item>
   <item id="History">History</item>
-  <item id="ExcessTime">Excess Time</item>
-  <item id="TimeRemaining">Time Remaining</item>
-  <item id="TimeExceeded">Time Exceeded</item>
-  <item id="TimeLogged">Time Logged</item>
-  <item id="EstimatedEffort">Effort</item>
+  <item id="ExcessTime">Exceeded</item>
+  <item id="TimeRemaining">Remaining</item>
+  <item id="TimeExceeded">Exceeded</item>
+  <item id="TimeLogged">Logged</item>
+  <item id="EstimatedEffort">Estimate</item>
   <item id="ItemsRemaining">Items Remaining</item>
   <item id="Planner">Planner</item>
   <item id="Activity">Activity</item>

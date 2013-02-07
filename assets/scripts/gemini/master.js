@@ -144,7 +144,7 @@ var gemini_master = {
         }
 
         // Planner page
-        if (area == "planner") {
+        else if (area == "planner") {
             if (!_.contains(tourStatus, "planner")) {
                 $("#tour-joyride-planner").joyride({
                     postRideCallback: function () {
@@ -155,7 +155,7 @@ var gemini_master = {
         }
 
         // Timeline page
-        if (area == "timeline") {
+        else if (area == "timeline") {
             if (!_.contains(tourStatus, "timeline")) {
                 $("#tour-joyride-timeline").joyride({
                     postRideCallback: function () {
@@ -166,7 +166,7 @@ var gemini_master = {
         }
 
         // Roadmap page
-        if (area == "roadmap") {
+        else if (area == "roadmap") {
             if (!_.contains(tourStatus, "roadmap")) {
                 $("#tour-joyride-roadmap").joyride({
                     postRideCallback: function () {
@@ -177,7 +177,7 @@ var gemini_master = {
         }
 
         // Items page
-        if (area == "items") {
+        else if (area == "items") {
             if (!_.contains(tourStatus, "items-1")) {
                 $("#tour-joyride-items-1").joyride({
                     postRideCallback: function () {

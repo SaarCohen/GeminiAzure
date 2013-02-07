@@ -1,5 +1,4 @@
-﻿//* scss-compile-options: :style => :compressed
-@mixin setColor($rgba)   
+﻿@mixin setColor($rgba)   
 {
     color: rgb(red($rgba),green($rgba),blue($rgba));
     color: $rgba; 

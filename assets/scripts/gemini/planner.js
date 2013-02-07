@@ -918,23 +918,19 @@ var planner =
     /*****************************************
     *** Right click menu
     *****************************************/
-    contextMenu: function (selector)
-    {
-        if (!planner.readOnly)
-        {
-            $(selector, '#planner').contextMenu({ menu: 'planner-context-menu' },
-                function (action, el, pos)
-                {
-                    var elem = planner.selectedContextCard = $(el);
-                    var cardId = planner.selectedContextCard.attr("id");
-                    var projectId = planner.selectedContextCard.attr("data-project-id");
-                   
-                    if (action == "view" && !$('#planner-context-menu a[href="#view"]').parent().hasClass('disabled'))
-                    {
-                        gemini_commons.openIssueUrlInTabProj(cardId, projectId);
-                    }
-                    else if (action == "new")
-                    {
+    contextMenu: function (selector) {
+        $(selector, '#planner').contextMenu({ menu: 'planner-context-menu' },
+            function (action, el, pos) {
+                var elem = planner.selectedContextCard = $(el);
+                var cardId = planner.selectedContextCard.attr("id");
+                var projectId = planner.selectedContextCard.attr("data-project-id");
+
+                if (action == "view" && !$('#planner-context-menu a[href="#view"]').parent().hasClass('disabled')) {
+                    gemini_commons.openIssueUrlInTabProj(cardId, projectId);
+                }
+
+                if (!planner.readOnly) {
+                    if (action == "new") {
                         var newCard = $("#planner-context-popup-new-card");
                         newCard.width(200);
                         newCard.height(110);
@@ -956,13 +952,11 @@ var planner =
                         });
                         gemini_keyboard.bindEscape('#planner-context-popup-new-card', planner.escapeDropdowns);
                     }
-                    else if (action == "edit" && !$('#planner-context-menu a[href="#edit"]').parent().hasClass('disabled'))
-                    {
+                    else if (action == "edit" && !$('#planner-context-menu a[href="#edit"]').parent().hasClass('disabled')) {
                         $(el).parent().data("issue-id", cardId);
                         gemini_edit.initEditing(el);
                     }
-                    else if (action == "comment" && !$('#planner-context-menu a[href="#comment"]').parent().hasClass('disabled'))
-                    {
+                    else if (action == "comment" && !$('#planner-context-menu a[href="#comment"]').parent().hasClass('disabled')) {
                         $("#cs-popup-center-content").css("width", "725px");
                         $("#cs-popup-center-content").css("height", "475px");
                         gemini_popup.centerPopup("project/All/" + projectId + "/item/" + cardId + "/editcommenteditor", "popup");
@@ -984,36 +978,36 @@ var planner =
                     else if (action == "pin") {
                         gemini_items.pinItem(cardId, false);
                     }
-                },
-                function (before)
-                {                   
-                    gemini_ajax.call(csVars.ProjectUrl + 'projects', "getprojectpermissions/" + before.attr('id'), function (response) {
-                        if (response.success) {                            
-                            if (response.Result.Data.canview)
-                                $('#planner-context-menu').enableContextMenuItems('#view');
-                            else
-                                $('#planner-context-menu').disableContextMenuItems('#view');
-
-                            if (response.Result.Data.canedit)
-                                $('#planner-context-menu').enableContextMenuItems('#edit');
-                            else
-                                $('#planner-context-menu').disableContextMenuItems('#edit');
-
-                            if (response.Result.Data.candelete)
-                                $('#planner-context-menu').enableContextMenuItems('#delete');
-                            else
-                                $('#planner-context-menu').disableContextMenuItems('#delete');
-
-                            if (response.Result.Data.cancomment)
-                                $('#planner-context-menu').enableContextMenuItems('#comment');
-                            else
-                                $('#planner-context-menu').disableContextMenuItems('#comment');
-
-                        }
-                    }, null, null);
                 }
-            );
-        }
+            },
+            function (before) {
+                gemini_ajax.call(csVars.ProjectUrl + 'projects', "getprojectpermissions/" + before.attr('id'), function (response) {
+                    if (response.success) {
+                        if (response.Result.Data.canview)
+                            $('#planner-context-menu').enableContextMenuItems('#view');
+                        else
+                            $('#planner-context-menu').disableContextMenuItems('#view');
+
+                        if (response.Result.Data.canedit)
+                            $('#planner-context-menu').enableContextMenuItems('#edit');
+                        else
+                            $('#planner-context-menu').disableContextMenuItems('#edit');
+
+                        if (response.Result.Data.candelete)
+                            $('#planner-context-menu').enableContextMenuItems('#delete');
+                        else
+                            $('#planner-context-menu').disableContextMenuItems('#delete');
+
+                        if (response.Result.Data.cancomment)
+                            $('#planner-context-menu').enableContextMenuItems('#comment');
+                        else
+                            $('#planner-context-menu').disableContextMenuItems('#comment');
+
+                    }
+                }, null, null);
+            }
+        );
+
     },
     
     addToSwimlane: function ()

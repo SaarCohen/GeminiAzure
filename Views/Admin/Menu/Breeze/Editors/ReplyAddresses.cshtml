@@ -13,13 +13,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="field-name" valign="top"><label for="UseUserFullname">From Display Name</label>
+                <td class="field-name" valign="top"><label for="UseUserFullname">&nbsp;</label>
                 </td>
                 <td valign="middle">
                     <input type="checkbox" id="UseUserFullname" name="UseUserFullname" @if (Model.Email.UseUserFullname)
                                                                          {
                                                                              @: checked="checked" 
-                                                                         }/>
+                                                                         }/><label for="UseUserFullname">Set 'From' display name to the user who sends the reply</label>
                 </td>
             </tr>
             <tr>

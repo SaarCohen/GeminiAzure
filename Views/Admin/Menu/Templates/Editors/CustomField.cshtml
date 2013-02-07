@@ -1,7 +1,7 @@
 ﻿@using System.Text
 @model TemplatesCustomFieldsEditModel
 
-<div id="TemplatesMetaItemContainer" style="height: 550px;">
+<div id="TemplatesMetaItemContainer" style="height: 610px;">
     <form id="regular-form">
         <input type="hidden" value="@Model.CustomField.Id" name="Id" id="Id" />
         <table id="table-admin-customfield" class="admin-data-entry" cellpadding="0" cellspacing="0">
@@ -316,7 +316,7 @@
             }
 
         });
-        setupForm($("#Type").val());
+        setTimeout(function () { setupForm($("#Type").val()) }, 10);
         setupCascading($("#CascadingField").val() > 0);
             
         $("#popup-button-no").click(function (e) { gemini_popup.popupClose(e); });

@@ -9,4 +9,5 @@
     <item id="Item">Test</item>
     <item id="Items">Tests</item>
     <item id="ItemsFound">Tests Found</item>
+    <item id="AdditionalInformation">Pre-conditions &amp; Expected Results</item>
 </Resource>

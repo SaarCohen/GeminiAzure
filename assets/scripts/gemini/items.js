@@ -28,6 +28,52 @@ gemini_items = {
                         });
 
     },
+    initComments: function () {
+        $('#comments').unbind('click').click(function (e) { $(this).hide(); });
+        $('.comments').unbind('click').click(function (e) {
+
+            gemini_commons.stopClick(e);
+            var parent = $(this).parent();
+            var that = this;
+            var pos = $(this).position();
+            if ($('#comments').is(':visible')) {
+                $('#comments').hide();
+                return;
+            }
+            gemini_keyboard.bindEscape("#items-grid #comments", function (guid, selector) {
+                $(selector).hide();
+                gemini_keyboard.unbindEscape("#items-grid #comments");
+
+            });
+            $.ajax({
+                type: "GET",
+                url: csVars.Url + 'project/' + parent.data('project-code') + '/' + parent.data('project-id') + '/item/' + parent.data('issue-id') + '/comments',
+                success: function (response) {
+                    if (!response.success) return;
+                    if (pos.left < 400) {
+                        $('#comments').html(response.Result.Data).show();
+                        $("#comments").position({
+                            "of": that,
+                            "my": "left top",
+                            "at": "center bottom",
+                            "offset": "0 0",
+                            "collision": "none"
+                        });
+                    }
+                    else {
+                        $('#comments').html(response.Result.Data).show();
+                        $("#comments").position({
+                            "of": that,
+                            "my": "right top",
+                            "at": "center bottom",
+                            "offset": "0 0",
+                            "collision": "none"
+                        });
+                    }
+                }
+            });
+        });
+    },
     resizeMainItemsGrid: function () {
     
             var totalWidth = $('#page-content-zone .layout').width();

@@ -17,19 +17,21 @@
                                         {<text>title='@Model.Issue.CreatedString'</text>}>
                         @if (Model[ItemAttributeVisibility.DateCreated])
                         {
-<text>@Model.Issue.CreatedRelative</text>
+<text>@Model.Issue.Created.ToString("dd-MMM-yyyy HH:mm")</text>
                         }
                         @if (Model[ItemAttributeVisibility.ReportedBy])
-                        {<text>- @Model.Issue.Reporter</text> }
+                        {<text><br /><div class="left margin-left-5 fonticon-arrow2-left" style="font-size:15px;"></div>@Model.Issue.Reporter</text> }
                     </td>
                 </tr>
             }
 
             @if (Model[ItemAttributeVisibility.DateRevised])
             {
-                <tr >
+                <tr>
                     <td class='label'>@GetResourceTemplate(ResourceKeys.Revised, Resourcing.Colon)</td>
-                    <td class='data' title='@Model.Issue.RevisedString'>@Model.Issue.RevisedRelative</td> 
+                    <td class='data' title='@Model.Issue.RevisedString'>@Model.Issue.Revised.ToString("dd-MMM-yyyy HH:mm")
+                        <br /><div class="left margin-left-5 fonticon-arrow2-left" style="font-size:15px;"></div>@Model.Issue.Reviser
+                    </td> 
                 </tr>
             }
                                                                                                                                                                                                    
@@ -37,7 +39,7 @@
             {
                 <tr>
                     <td class='label'>@GetResourceTemplate(ResourceKeys.ClosedDate, Resourcing.Colon)</td>
-                    <td class='data' title='@Model.Issue.ClosedDateString'>@Model.Issue.ClosedDateRelative</td>
+                    <td class='data' title='@Model.Issue.ClosedDateString'>@(Model.Issue.ClosedDate == null ? "" : Model.Issue.ClosedDate.Value.ToString("dd-MMM-yyyy HH:mm"))</td>
                 </tr>
             }
                                                                                                                                                                                                             
@@ -45,8 +47,13 @@
             {
                 <tr>
                     <td class='label'>@GetResourceTemplate(ResourceKeys.ResolvedDate, Resourcing.Colon)</td>
-                    <td class='data' title='@Model.Issue.ResolvedDateString'>@Model.Issue.ResolvedDateRelative</td>
+                    <td class='data' title='@Model.Issue.ResolvedDateString'>@(Model.Issue.ResolvedDate == null ? "" : Model.Issue.ResolvedDate.Value.ToString("dd-MMM-yyyy HH:mm"))</td>
                 </tr>
+            }
+
+            @if (Model[ItemAttributeVisibility.Elapsed] || Model[ItemAttributeVisibility.EstimatedEffort] || Model[ItemAttributeVisibility.CalculatedTimeLogged] || (Model[ItemAttributeVisibility.CalculatedTimeExceeded] && Model.Issue.IsExcessTime || Model[ItemAttributeVisibility.CalculatedTimeRemaining] && !Model.Issue.IsExcessTime) || Model[ItemAttributeVisibility.Source])
+            {
+                <tr><td colspan="2"><div class="attribute margin-top-5" style="min-height:0px;"></div></td></tr>
             }
 
             @if (Model[ItemAttributeVisibility.Elapsed])
@@ -82,7 +89,7 @@
             @if (Model[ItemAttributeVisibility.CalculatedTimeExceeded] && Model.Issue.IsExcessTime || Model[ItemAttributeVisibility.CalculatedTimeRemaining] && !Model.Issue.IsExcessTime)
             {
                 <tr>
-                <td class='label'>@GetResource(Model.Issue.IsExcessTime ? ResourceKeys.ExcessTime : ResourceKeys.TimeRemaining, Resourcing.Colon)</td>
+                <td class='label'>@GetResource(Model.Issue.IsExcessTime ? ResourceKeys.TimeExceeded : ResourceKeys.TimeRemaining, Resourcing.Colon)</td>
                 <td class='data'>@Model.Issue.ExcessTimeOrTimeLeft</td>
                 </tr>
             }

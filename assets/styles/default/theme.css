@@ -2008,12 +2008,24 @@ textarea.input-size12 {
         cursor: pointer; }
     #view-item .contents-pane .comments-article .author-box .fonticon-persons {
       font-size: 15px; }
-    #view-item .contents-pane .comments-article .thumbnail .thumbnail-close-image {
-      right: 31px; }
-    #view-item .contents-pane .comments-article .thumbnail .non-image-container .thumbnail-close-image {
-      right: 12px; }
-    #view-item .contents-pane .comments-article .thumbnail .thumbnail-image {
-      max-width: 100px; }
+    #view-item .contents-pane .comments-article .thumbnail {
+      height: 16px;
+      width: auto;
+      padding-right: 10px; }
+      #view-item .contents-pane .comments-article .thumbnail .thumbnail-close-image {
+        right: 0;
+        top: 0; }
+      #view-item .contents-pane .comments-article .thumbnail .non-image-container .thumbnail-close-image {
+        right: 31px; }
+      #view-item .contents-pane .comments-article .thumbnail .thumbnail-image {
+        height: 16px;
+        display: inline-block; }
+      #view-item .contents-pane .comments-article .thumbnail img {
+        border-radius: 0; }
+      #view-item .contents-pane .comments-article .thumbnail .thumbnail-name {
+        display: inline-block;
+        padding: 0;
+        position: relative; }
     #view-item .contents-pane .attachment-article #attachmentupload-hit .qq-upload-button {
       margin: 0;
       padding: 0;
@@ -2847,15 +2859,18 @@ textarea.input-size12 {
       display: none; }
     #items-grid #comments .thumbnail-close-image {
       display: none; }
+    #items-grid #comments .thumbnail-image {
+      float: left; }
     #items-grid #comments .thumbnail img {
-      widh: 50px;
-      height: 50px; }
+      widh: 16px;
+      height: 16px; }
     #items-grid #comments .attachment {
       padding-top: 5px; }
-      #items-grid #comments .attachment .thumbnail-name {
-        padding-top: 5px; }
-        #items-grid #comments .attachment .thumbnail-name a {
-          color: #888888; }
+      #items-grid #comments .attachment .thumbnail {
+        padding-bottom: 5px; }
+      #items-grid #comments .attachment .thumbnail-name a {
+        color: #888888;
+        padding-left: 5px; }
   #items-grid #tabledata {
     outline: 0;
     width: 100%;

@@ -18,7 +18,7 @@
                     <li class="separator"></li>
                     <li><a id="reset-help" href="#">Tour Tips</a></li>
                     <li class="separator"></li>
-                    <li class="highlight"><a href="~/account/logout">@GetResource(ResourceKeys.Logout)</a></li>
+                    @if(!GeminiContext.Config.IsWindowsAuthentication){ <li class="highlight"><a href="~/account/logout">@GetResource(ResourceKeys.Logout)</a></li> }
                 </ul>
             </span>
         }

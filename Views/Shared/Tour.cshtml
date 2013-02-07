@@ -1,7 +1,10 @@
 ﻿@{
     var userToursettings = GeminiContext.User.GetSettings().TourStatus;
+    bool anonymousUser = GeminiContext.User.Entity.Id == Constants.AnonymousUserId;
 }
-@if (!userToursettings.Contains("items-1"))
+@if(!anonymousUser)
+{
+if (!userToursettings.Contains("items-1"))
 {
     <ol id="tour-joyride-items-1" class="hide">
         <li data-id="project-menu-dropdown" data-options="nubPosition: top;" data-button="Okay">
@@ -27,7 +30,7 @@
         </li>
     </ol>
 }
-@if (!userToursettings.Contains("home"))
+else if (!userToursettings.Contains("home"))
 {
     <ol id="tour-joyride-home" class="hide">
         <li data-id="all-projects-menu-box" data-options="" data-button="Okay">
@@ -44,7 +47,7 @@
         </li>
     </ol>
 }
-@if (!userToursettings.Contains("planner"))
+else if (!userToursettings.Contains("planner"))
 {
     <ol id="tour-joyride-planner" class="hide">
         <li data-id="items-filter" data-options="" data-button="Okay">
@@ -67,7 +70,7 @@
         </li>
     </ol>
 }
-@if (!userToursettings.Contains("timeline"))
+else if (!userToursettings.Contains("timeline"))
 {
     <ol id="tour-joyride-timeline" class="hide">
         <li data-id="timeline-datepicker" data-options="nubPosition: right;" data-button="Okay">
@@ -75,7 +78,7 @@
         </li>
     </ol>
 }
-@if (!userToursettings.Contains("roadmap"))
+else if (!userToursettings.Contains("roadmap"))
 {
     <ol id="tour-joyride-roadmap" class="hide">
         <li data-id="versions" data-options="nubPosition: top;" data-button="Okay">
@@ -85,4 +88,5 @@
             <p>Quick facts about the selected release tell you how you are tracking.</p>
         </li>
     </ol>
+}
 }
