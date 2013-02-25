@@ -348,4 +348,5 @@
   <item id="Voted">Röstat</item>
   <item id="Id">Id</item>
   <item id="ImportWizard">Import Wizard</item>
+  <item id="InvalidCredentials">Invalid Credentials</item>
 </Resource>

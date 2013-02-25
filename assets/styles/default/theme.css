@@ -2653,6 +2653,9 @@ textarea.input-size12 {
   #login-page #welcome-title {
     padding: 0;
     font-size: 22px; }
+  #login-page .invalid-credentials {
+    color: red;
+    text-align: right; }
   #login-page #welcome-message {
     padding: 0 0 0 0; }
   #login-page p {

@@ -122,7 +122,7 @@
                 jsPlumb.bind("click", function(c, e)
                 {
                     if (!canEdit) return;
-
+                    e.stopPropagation();
                     var connectionId = c;
                     var source = $("#" + c.sourceId);
                     var transitions = $("#" + c.sourceId).attr("data-transitions");

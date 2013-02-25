@@ -3923,7 +3923,11 @@ textarea.input-size12
         padding: 0;
         font-size: 22px;
     }
-
+	.invalid-credentials
+	{
+		color: red;
+		text-align: right;
+	}
     #welcome-message 
     {
         padding: 0 0 0 0;

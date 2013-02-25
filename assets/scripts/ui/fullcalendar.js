@@ -1374,7 +1374,12 @@
             return s;
         }
         if (typeof s == 'number') { // a UNIX timestamp
-            return new Date(s * 1000);
+            var d = new Date(s * 1000);
+            if (ignoreTimezone) {
+                d = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds());
+            }
+
+            return d;
         }
         if (typeof s == 'string') {
             if (s.match(/^\d+(\.\d+)?$/)) { // a UNIX timestamp

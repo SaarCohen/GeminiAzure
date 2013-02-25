@@ -369,4 +369,5 @@
   <item id="Id">Código</item>
   <item id="CustomLookupData">Dados de pesquisa personalizados</item>
   <item id="ImportWizard">Import Wizard</item>
+  <item id="InvalidCredentials">Invalid Credentials</item>
 </Resource>

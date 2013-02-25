@@ -40,6 +40,8 @@
 
     $("#bulk-edit-container").jScrollPane({ autoReinitialise: true, autoReinitialiseDelay: 250 });
 
+    gemini_ui.userAutocomplete('#bulk-edit-container .user-autocomplete');
+
     $("#popup-button-no").click(function (e) {
         gemini_popup.popupClose(e);
     });
@@ -65,7 +67,7 @@
     $('textarea', '#bulk-edit-form table tr td.td-data').prop('disabled', false);
 
     $('.bulk-toggler', '#bulk-edit-form table tr td').click(function () {
-        var control = $('#' + $(this).attr('id').substring(5));
+        var control = $('#bulk-edit-container #' + $(this).attr('id').substring(5));
         if ($(this).is(':checked')) {
             control.prop('disabled', false);
             control.trigger("liszt:updated");

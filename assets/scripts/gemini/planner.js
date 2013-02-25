@@ -413,7 +413,7 @@ var planner =
     bindCardTitleChange: function ()
     {
         // cannot create a new record 
-        if (!planner.readOnly)
+        //if (!planner.readOnly)
         {
             var card = $("#planner-context-popup-new-card");
             gemini_commons.inputKeyHandler("#planner-context-popup-new-card > .card-title",
@@ -927,57 +927,56 @@ var planner =
 
                 if (action == "view" && !$('#planner-context-menu a[href="#view"]').parent().hasClass('disabled')) {
                     gemini_commons.openIssueUrlInTabProj(cardId, projectId);
+                    return;
                 }
 
-                if (!planner.readOnly) {
-                    if (action == "new") {
-                        var newCard = $("#planner-context-popup-new-card");
-                        newCard.width(200);
-                        newCard.height(110);
-                        newCard.show();
+                if (action == "new") {
+                    var newCard = $("#planner-context-popup-new-card");
+                    newCard.width(200);
+                    newCard.height(110);
+                    newCard.show();
 
-                        var title = $(".card-title", newCard);
+                    var title = $(".card-title", newCard);
 
-                        title.width(newCard.width() - 2);
-                        title.height(newCard.height() - 2);
-                        title.focus().select();
-                        title.val("");
+                    title.width(newCard.width() - 2);
+                    title.height(newCard.height() - 2);
+                    title.focus().select();
+                    title.val("");
 
-                        newCard.position({
-                            "my": "center top",
-                            "at": "center middle",
-                            "of": elem,
-                            "offset": "0 10",
-                            "collision": "none"
-                        });
-                        gemini_keyboard.bindEscape('#planner-context-popup-new-card', planner.escapeDropdowns);
-                    }
-                    else if (action == "edit" && !$('#planner-context-menu a[href="#edit"]').parent().hasClass('disabled')) {
-                        $(el).parent().data("issue-id", cardId);
-                        gemini_edit.initEditing(el);
-                    }
-                    else if (action == "comment" && !$('#planner-context-menu a[href="#comment"]').parent().hasClass('disabled')) {
-                        $("#cs-popup-center-content").css("width", "725px");
-                        $("#cs-popup-center-content").css("height", "475px");
-                        gemini_popup.centerPopup("project/All/" + projectId + "/item/" + cardId + "/editcommenteditor", "popup");
-                    }
-                    else if (action == "delete" && !$('#planner-context-menu a[href="#delete"]').parent().hasClass('disabled')) {
-                        gemini_commons.translateMessage("[[Delete]] " + elem.find(".title").text() + "?", ['Delete'], function (message) {
-                            gemini_popup.modalConfirm(message, null,
-                                function () {
-                                    planner.postDelete({ issueId: cardId });
-                                });
-                        });
-                    }
-                    else if (action == "share") {
-                        gemini_share.showShare("left top", "left bottom", "0 0", el, cardId, "{}");
-                    }
-                    else if (action == "follow") {
-                        gemini_ajax.call("project/All/" + projectId + "/item", "addwatcher/" + cardId + "/0");
-                    }
-                    else if (action == "pin") {
-                        gemini_items.pinItem(cardId, false);
-                    }
+                    newCard.position({
+                        "my": "center top",
+                        "at": "center middle",
+                        "of": elem,
+                        "offset": "0 10",
+                        "collision": "none"
+                    });
+                    gemini_keyboard.bindEscape('#planner-context-popup-new-card', planner.escapeDropdowns);
+                }
+                else if (action == "edit" && !$('#planner-context-menu a[href="#edit"]').parent().hasClass('disabled')) {
+                    $(el).parent().data("issue-id", cardId);
+                    gemini_edit.initEditing(el);
+                }
+                else if (action == "comment" && !$('#planner-context-menu a[href="#comment"]').parent().hasClass('disabled')) {
+                    $("#cs-popup-center-content").css("width", "725px");
+                    $("#cs-popup-center-content").css("height", "475px");
+                    gemini_popup.centerPopup("project/All/" + projectId + "/item/" + cardId + "/editcommenteditor", "popup");
+                }
+                else if (action == "delete" && !$('#planner-context-menu a[href="#delete"]').parent().hasClass('disabled')) {
+                    gemini_commons.translateMessage("[[Delete]] " + elem.find(".title").text() + "?", ['Delete'], function (message) {
+                        gemini_popup.modalConfirm(message, null,
+                            function () {
+                                planner.postDelete({ issueId: cardId });
+                            });
+                    });
+                }
+                else if (action == "share") {
+                    gemini_share.showShare("left top", "left bottom", "0 0", el, cardId, "{}");
+                }
+                else if (action == "follow") {
+                    gemini_ajax.call("project/All/" + projectId + "/item", "addwatcher/" + cardId + "/0");
+                }
+                else if (action == "pin") {
+                    gemini_items.pinItem(cardId, false);
                 }
             },
             function (before) {
@@ -1012,29 +1011,33 @@ var planner =
     
     addToSwimlane: function ()
     {
-        $(".add-to-swimlane", ".axis-label-header").click(function (e)
-        {
-            planner.selectedContextCard = $(this).parent();
+        if (!planner.readOnly) {
+            $(".add-to-swimlane", ".axis-label-header").click(function (e) {
+                planner.selectedContextCard = $(this).parent();
 
-            var newCard = $("#planner-context-popup-new-card");
-            newCard.width(200);
-            newCard.height(110);
-            newCard.show();
+                var newCard = $("#planner-context-popup-new-card");
+                newCard.width(200);
+                newCard.height(110);
+                newCard.show();
 
-            var title = $(".card-title", newCard);
+                var title = $(".card-title", newCard);
 
-            title.width(newCard.width() - 2);
-            title.height(newCard.height() - 2);
-            title.focus().select();
-            title.val("");
+                title.width(newCard.width() - 2);
+                title.height(newCard.height() - 2);
+                title.focus().select();
+                title.val("");
 
-            newCard.position({
-                "my": "center top",
-                "at": "center middle",
-                "of": $(this).closest(".axis-label-header"),
-                "offset": "0 10",
-                "collision": "none"
+                newCard.position({
+                    "my": "center top",
+                    "at": "center middle",
+                    "of": $(this).closest(".axis-label-header"),
+                    "offset": "0 10",
+                    "collision": "none"
+                });
             });
-        });
+        }
+        else {
+            $(".add-to-swimlane", ".axis-label-header").css('visibility', 'hidden');
+        }
     }
 };

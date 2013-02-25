@@ -287,7 +287,7 @@
               $(this).html($(this).html().replace('&lt;', '<').replace('&gt;', '>'));
           });
           gemini_ui.chosen("#Queue", null, true);
-          gemini_ui.setDropdownValue("#Queue", '@(Model.Mailbox.ProjectId)');
+          gemini_ui.setDropdownValue("#Queue", '@(Model.Mailbox.QueueId)');
 
           gemini_ui.chosen("#SubjectLikeExpressions", null, true);
           gemini_ui.chosen("#SubjectNotLikeExpressions", null, true);

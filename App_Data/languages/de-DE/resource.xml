@@ -368,4 +368,5 @@
   <item id="Voted">Abgestimmt</item>
   <item id="Id">ID</item>
   <item id="ImportWizard">Import-Assistent</item>
+  <item id="InvalidCredentials">Ungültige Zugangsdaten</item>
 </Resource>

@@ -373,4 +373,5 @@
   <item id="Voted">votado</item>
   <item id="Id">ID</item>
   <item id="ImportWizard">Import Wizard</item>
+  <item id="InvalidCredentials">Invalid Credentials</item>
 </Resource>

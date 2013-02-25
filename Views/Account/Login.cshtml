@@ -48,6 +48,10 @@
                                                                         <input id="regular-signin" type="submit" value='@GetResource(ResourceKeys.Login)' class='button-primary button-small' />
                                                                     </td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><div class="invalid-credentials">@Model.ErrorMessage</div></td>
+                                                                </tr>
                                                                 @if(GeminiContext.Config.ShowUserRegistrationLink)
                                                                 {
                                                                     <tr>
