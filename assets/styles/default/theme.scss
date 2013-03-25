@@ -2579,10 +2579,11 @@ textarea.input-size12
 
     .attributes-pane
     {
-        width: 20%;
+        max-width: 20%;
         border: 1px solid transparent; 
         margin-right: 20px; 
         padding: 10px;
+		@include rounded(10px);
 
         ul
         {
@@ -3452,6 +3453,12 @@ textarea.input-size12
 }
 
 /****** View Item Popups **********/
+
+/** Context menu for description tinymc*/
+div.mceDropDown
+{
+	z-index: 2147483620 !important;
+}
 
 #colorbox
 {
@@ -4851,4 +4858,44 @@ $border-color: $color-grayscale3;
 	color: maroon;
 }
 
+/************************************************************
+*  Admini Help Button
+*************************************************************/
+
+#support-button
+{
+	position: fixed;
+	right: 0;
+	top: 220px;
+
+	a
+	{
+		color: $color-white;
+		background-color: $color-black;
+		display: block;
+		line-height: 40px;
+		height: 41px;
+		font-weight: bold;
+		padding: 0 10px;
+		margin-right: -14px;
+		-webkit-transition: all 0.15s ease-in-out;
+		-moz-transition: all 0.15s ease-in-out;
+		transition: all 0.15s ease-in-out;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		transform: rotate(90deg);
+		text-decoration: none;
+		zoom: 1;
+
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+
+		&:hover 
+		{
+			background-color: ligthen($color-black, 20%);
+			color: $color-grayscale5;
+		}
+	}
+}
 

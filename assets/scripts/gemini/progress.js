@@ -137,7 +137,8 @@
                 backgroundColor: background,
                 renderTo: 'status-breakdown',
                 type: 'bar',
-                marginLeft: 100
+                marginLeft: 100,
+                marginRight: 30
             },
             colors:["#63b6db"],
             title: {

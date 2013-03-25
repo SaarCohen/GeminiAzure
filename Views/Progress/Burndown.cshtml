@@ -118,18 +118,21 @@
     var burndownOpenData = @Html.Raw(Model.Burndown.Select(b => b.OpenCount).ToJson());
     var burndownCreatedData = @Html.Raw(Model.Burndown.Select(b => b.CreatedCount).ToJson());
     var burndownIdealLine = @Html.Raw(Model.IdealLine.ToJson());
-
     var burnupCategory = @Html.Raw(Model.Burnup.Select(b => b.Category).ToJson());
     var burnupTotalData = @Html.Raw(Model.Burnup.Select(b => b.TotalCount).ToJson());
-    var burnupClosedData = @Html.Raw(Model.Burnup.Select(b => b.ClosedCount).ToJson());
+
+ 
+    
+     var burnupClosedData = @(Model.Burnup.Any(a => a.CountType == CountTypes.Issues) ? Html.Raw(Model.Burnup.Select(b => b.ClosedCount).ToJson()) : Html.Raw(Model.Burnup.Select(b => b.TotalLoggedHours).ToJson()));
+       
+    
 
     var milestoneData = @Html.Raw(Model.Milestones.ToJson());
 
     var translation = {Items: '@(Model.ItemHours ? GetResource(ResourceKeys.Items) : GetResource(ResourceKeys.Hours))', Total: '@GetResource(ResourceKeys.Total, Resourcing.Colon)', Created: '@GetResource(ResourceKeys.Created)', Open: '@GetResource(ResourceKeys.Open)', Closed: '@GetResource(ResourceKeys.Closed)' };
-
+   
     gemini_progress.burddownChart(translation,burndownCategory,burndownOpenData,burndownCreatedData,burndownIdealLine);
     gemini_progress.burdupChart(translation,burnupCategory,burnupTotalData,burnupClosedData);
-        
     gemini_progress.showCompleteness(completeness);
     gemini_progress.showDelta(@Model.Remain);
     gemini_progress.showDays(@Model.Estimated,@Model.Logged);

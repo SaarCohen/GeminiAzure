@@ -44,6 +44,7 @@
                 gemini_popup.popupClose(e);
                 gemini_admin.getPage();
                 gemini_ui.stopBusy('#cs-popup-center-zone #cs-popup-center-buttons .button-primary');
+                window.location.reload();
             }, function () { gemini_ui.stopBusy('#colorbox #cs-popup-center-buttons .button-primary'); }, $("#GroupForm").serialize());
         }
         else {

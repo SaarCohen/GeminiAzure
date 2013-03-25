@@ -7,11 +7,11 @@
         <table class="data-entry-box">
             <tr>
                 <td>&nbsp;</td>
-                <td><input type="checkbox" id="SyncWithActiveDirectory" name="SyncWithActiveDirectory" @if(Model.SyncWithActiveDirectory){ <text>checked="checked"</text> } /> Sync with Active Directory</td>
+                <td><input type="checkbox" id="SyncWithActiveDirectory" name="SyncWithActiveDirectory" @if(!Model.Licensed) {<text>disabled="disabled"</text> }  @if(Model.SyncWithActiveDirectory){ <text>checked="checked"</text> } /> <label for="SyncWithActiveDirectory">Sync with Active Directory</label></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input type="checkbox" id="AddNewUsers" name="AddNewUsers" @if(Model.AddNewUsers){ <text>checked="checked"</text> } /> Add new users to Gemini found in Active Directory</td>
+                <td><input type="checkbox" id="AddNewUsers" name="AddNewUsers" @if(Model.AddNewUsers){ <text>checked="checked"</text> } /> <label for="AddNewUsers">Add new users to Gemini found in Active Directory</label></td>
             </tr>
             <tr><td colspan="2"><div class="divider"></div></td></tr>  
 

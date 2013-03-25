@@ -26,7 +26,7 @@ gemini_item = {
         });
         
         gemini_ui.expanders('#cs-sections');
-        gemini_ui.collapseStarting('section-widget-', 'test-', 'history-', 'watchers-section','link-section', 'attachments-section', 'customfields-section', 'dependencies-section', 'sourcecode-section', 'timelog-section', 'watchers-section');
+        gemini_ui.collapseStarting('section-widget-', 'test-', 'history-', 'watchers-section', 'link-section', 'attachments-section', 'additional-section', 'dependencies-section', 'sourcecode-section', 'timelog-section', 'watchers-section');
         gemini_ui.expand($('.expander', '#cs-sections').first().parent());
 
         $('.item-nav a').click(function () {

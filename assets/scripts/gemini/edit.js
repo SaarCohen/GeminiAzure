@@ -135,7 +135,8 @@ gemini_edit = {
                 gemini_ui.stopBusy('#cs-popup #cs-popup-save');
             },
             error: function (e, data) {
-                gemini_ui.stopBusy('#cs-popup #cs-popup-add-save');
+                gemini_ui.stopBusy('#cs-popup #cs-popup-save');
+                gemini_popup.toast("Item could not be created", true);
             }// post-submit callback   
 
         };

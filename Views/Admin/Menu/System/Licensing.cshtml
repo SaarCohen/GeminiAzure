@@ -13,6 +13,7 @@
                 <th>Marketplace App Id</th>
                 <th>Registered to</th>
                 <th>Expires</th>
+                <th>Countersoft Id</th>
                 <th class="centered"></th>
             </tr>
         </thead>        
@@ -21,11 +22,12 @@
             {
                 <tr data-id="@item.Index" data-guid="@item.Id">
                     <td data-edit="false">@item.Product</td>
-                    <td data-edit="false">@item.LicenseType</td>
+                    <td data-edit="false">@(item.Package.HasValue() ? item.Package : item.LicenseType.ToString())</td>
                     <td data-edit="false">@item.Users</td>
                     <td data-edit="false">@item.AppId</td>
                     <td data-edit="false">@item.Name</td>
                     <td data-edit="false">@item.Expiry.ToShortDateString()</td>
+                    <td data-edit="false" class="bold">@item.CountersoftId</td>
                     <td data-edit="false" class="centered actions"><span title="@GetResource(ResourceKeys.Delete)" class="cursor-pointer action-button-delete"></span></td>
                 </tr>
             }
@@ -35,7 +37,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        gemini_admin.initDatatables("#table-admin-licensing", { "aoColumnDefs": [{ "bSortable": false, "aTargets": [0, 1, 2, 3, 4, 5] }] });
+        gemini_admin.initDatatables("#table-admin-licensing", { "aoColumnDefs": [{ "bSortable": false, "aTargets": [0, 1, 2, 3, 4, 5, 6] }] });
 
         $("#table-admin-licensing_wrapper").prepend("<div id='add-button-container'><input id='system-options-add' type='button' value='Add' class='button-primary'></div>");
 
